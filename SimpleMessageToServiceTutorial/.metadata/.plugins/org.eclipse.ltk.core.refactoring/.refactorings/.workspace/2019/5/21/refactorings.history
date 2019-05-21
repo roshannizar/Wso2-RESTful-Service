@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;SampleServices/src/main/synapse-config/endpoints/PinevallyEP.xml&apos;" deleteContents="false" description="Delete resource &apos;SampleServices/src/main/synapse-config/endpoints/PinevallyEP.xml&apos;" element1="/SampleServices/src/main/synapse-config/endpoints/PinevallyEP.xml" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1558238053653"/>
+</session>

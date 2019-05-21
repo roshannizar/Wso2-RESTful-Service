@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/healthcare" name="HealthcareAPI" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="GET" uri-template="/querydoctor/{category}">
+        <inSequence>
+            <log description="Request Log" level="custom">
+                <property name="message" value="&quot;Welcome to HealthcareService&quot;"/>
+            </log>
+            <send>
+                <endpoint key="QueryDoctorEP"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="POST" uri-template="/categories/{category}/reserve">
+        <inSequence>
+            <log description="Get Hospital"/>
+            <switch source="get-property('Hospital')">
+                <case regex="grand oak community hospital">
+                    <log description="Grand Oak Log">
+                        <property expression="fn:concat('Routing to',get-property('Hospital'))" name="message"/>
+                    </log>
+                    <send>
+                        <endpoint key="GrandOakEP"/>
+                    </send>
+                </case>
+                <case regex="clemency medical center">
+                    <log description="Clemency Log">
+                        <property expression="fn:concat('Routing to',get-property('Hospital'))" name="message"/>
+                    </log>
+                    <send>
+                        <endpoint key="ClemencyEP"/>
+                    </send>
+                </case>
+                <case regex="pine valley community hospital">
+                    <log description="PineValley Log">
+                        <property expression="fn:concat('Routing to',get-property('Hospital'))" name="message"/>
+                    </log>
+                    <send>
+                        <endpoint key="PineValley"/>
+                    </send>
+                </case>
+                <default>
+                    <log description="Fault Log">
+                        <property expression="fn:concat('Invalid Hospital - ', get-property('Hospital'))" name="message"/>
+                    </log>
+                    <respond description="Respond"/>
+                </default>
+            </switch>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+</api>

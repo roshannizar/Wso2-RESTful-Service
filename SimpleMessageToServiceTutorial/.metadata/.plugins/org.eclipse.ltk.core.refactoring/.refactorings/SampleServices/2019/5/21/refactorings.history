@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;SampleServices/src/main/synapse-config/endpoints/Clemency.xml&apos; to &apos;ClemencyEP.xml&apos;" description="Rename resource &apos;Clemency.xml&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/synapse-config/endpoints/Clemency.xml" name="ClemencyEP.xml" stamp="1558238002355" updateReferences="true"/>
+</session>
